@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EditEmployeeModal from "./EditEmployeeModal";
+import api from "../api";
 
 const EmployeeListTable = () => {
   const [employees, setEmployees] = useState([]);
@@ -13,9 +14,7 @@ const EmployeeListTable = () => {
 
   const getEmployees = async () => {
     try {
-      const response = await axios.get(
-        "https://employee-management-system-wjus.onrender.com/api/employee/get",
-      );
+      const response = await api.get("/employee/get");
 
       setEmployees(response.data.data);
     } catch (error) {
@@ -30,9 +29,7 @@ const EmployeeListTable = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await axios.delete(
-        `https://employee-management-system-wjus.onrender.com/api/employee/delete/${id}`,
-      );
+      const response = await api.delete(`/employee/delete/${id}`);
 
       alert(response.data.message);
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import api from "../api";
 
 const EditEmployeeModal = ({ employee, onClose, getEmployees }) => {
   const [formData, setFormData] = useState({
@@ -33,8 +34,8 @@ const EditEmployeeModal = ({ employee, onClose, getEmployees }) => {
   };
   const handleUpdate = async () => {
     try {
-      const response = await axios.put(
-        `https://employee-management-system-wjus.onrender.com/api/employee/update/${employee._id}`,
+      const response = await api.put(
+        `/employee/update/${employee._id}`,
         formData,
       );
 

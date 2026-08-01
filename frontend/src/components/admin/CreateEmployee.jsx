@@ -32,10 +32,7 @@ const CreateEmployee = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://employee-management-system-wjus.onrender.com/api/employee/create",
-        formData,
-      );
+     const response = await api.post("/employee/create", formData);
 
       alert("Employee Created Successfully");
       console.log(response.data);

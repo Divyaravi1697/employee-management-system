@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,13 +22,9 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://employee-management-system-wjus.onrender.com/api/auth/login",
-        formData,
-        {
-          withCredentials: true,
-        },
-      );
+      const response = await api.post("/auth/login", formData, {
+        withCredentials: true,
+      });
 
       // Save logged-in user details
       localStorage.setItem("user", JSON.stringify(response.data.user));

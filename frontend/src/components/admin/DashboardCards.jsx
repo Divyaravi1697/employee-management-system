@@ -12,9 +12,7 @@ const DashboardCards = () => {
 
   const getEmployees = async () => {
     try {
-      const response = await axios.get(
-        "https://employee-management-system-wjus.onrender.com/api/employee/get",
-      );
+     const response = await api.get("/employee/get");
 
       setEmployees(response.data.data);
     } catch (error) {

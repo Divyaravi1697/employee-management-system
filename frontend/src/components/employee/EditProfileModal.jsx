@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import api from "../../services/api";
 
 const EditProfileModal = ({ employee, onClose, getProfile }) => {
   const [formData, setFormData] = useState({
@@ -33,8 +34,8 @@ const EditProfileModal = ({ employee, onClose, getProfile }) => {
         return;
       }
 
-      const response = await axios.put(
-        `https://employee-management-system-wjus.onrender.com/api/employee/update/${employee.id}`,
+      const response = await api.put(
+        `/employee/update/${employee.id}`,
         formData,
         {
           withCredentials: true,

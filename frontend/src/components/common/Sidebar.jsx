@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../../services/api";
 import {
   FaTimes,
   FaTachometerAlt,
@@ -56,13 +57,9 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(
-        "https://employee-management-system-wjus.onrender.com/api/auth/logout",
-        {},
-        {
-          withCredentials: true,
-        },
-      );
+      await api.post("/auth/logout", {}, {
+        withCredentials: true,
+      });
 
       localStorage.removeItem("user");
 
