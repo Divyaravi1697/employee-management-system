@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaUsers, FaUserCheck, FaUserTimes, FaBuilding } from "react-icons/fa";
 import EmployeeChart from "./EmployeeChart";
+import api from "../../services/api";
 
 const DashboardCards = () => {
   const [employees, setEmployees] = useState([]);
