@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EditEmployeeModal from "./EditEmployeeModal";
-import api from "../api";
+import api from "../../services/api";
 
 const EmployeeListTable = () => {
   const [employees, setEmployees] = useState([]);
