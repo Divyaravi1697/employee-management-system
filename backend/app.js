@@ -14,11 +14,19 @@ console.log(process.env.name);
 
 const app = express();
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,        // e.g. https://employee-management-system.vercel.app
+  'http://localhost:3000'        // for local dev
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://employee-management-system-ikw1d5671-divyas-projects-d583caa4.vercel.app/"
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
