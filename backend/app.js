@@ -14,12 +14,13 @@ console.log(process.env.name);
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://employee-management-system-gezrpnn5t-divyas-projects-d583caa4.vercel.app"
+  ],
+  credentials: true,
+}));
 
 app.use(express.json());
 app.use(cookieParser());
