@@ -57,7 +57,7 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        "https://employee-management-system-wjus.onrender.com/api/auth/logout",
         {},
         {
           withCredentials: true,

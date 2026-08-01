@@ -34,7 +34,7 @@ const EditProfileModal = ({ employee, onClose, getProfile }) => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/api/employee/update/${employee.id}`,
+        `https://employee-management-system-wjus.onrender.com/api/employee/update/${employee.id}`,
         formData,
         {
           withCredentials: true,

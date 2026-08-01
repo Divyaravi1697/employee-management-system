@@ -10,13 +10,7 @@ const EditEmployeeModal = ({ employee, onClose, getEmployees }) => {
     email: "",
     isActive: true,
   });
-    const departments = [
-      "HR",
-      "Design",
-      "Finance",
-      "Marketing",
-     
-    ];
+  const departments = ["HR", "Design", "Finance", "Marketing"];
 
   useEffect(() => {
     if (employee) {
@@ -38,11 +32,9 @@ const EditEmployeeModal = ({ employee, onClose, getEmployees }) => {
     });
   };
   const handleUpdate = async () => {
-   
-
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/employee/update/${employee._id}`,
+        `https://employee-management-system-wjus.onrender.com/api/employee/update/${employee._id}`,
         formData,
       );
 

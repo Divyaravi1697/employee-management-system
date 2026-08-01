@@ -33,7 +33,7 @@ const CreateEmployee = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/employee/create",
+        "https://employee-management-system-wjus.onrender.com/api/employee/create",
         formData,
       );
 

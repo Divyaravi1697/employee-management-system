@@ -3,9 +3,9 @@ import axios from "axios";
 import EditEmployeeModal from "./EditEmployeeModal";
 
 const EmployeeListTable = () => {
-    const [employees, setEmployees] = useState([]);
-    const [isEditOpen, setIsEditOpen] = useState(false);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [employees, setEmployees] = useState([]);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   useEffect(() => {
     getEmployees();
@@ -14,33 +14,33 @@ const EmployeeListTable = () => {
   const getEmployees = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/employee/get",
+        "https://employee-management-system-wjus.onrender.com/api/employee/get",
       );
-   
+
       setEmployees(response.data.data);
     } catch (error) {
       console.log(error);
     }
-    };
-    const handleDelete = async (id) => {
-      const confirmDelete = window.confirm(
-        "Are you sure you want to delete this employee?",
+  };
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this employee?",
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      const response = await axios.delete(
+        `https://employee-management-system-wjus.onrender.com/api/employee/delete/${id}`,
       );
 
-      if (!confirmDelete) return;
+      alert(response.data.message);
 
-      try {
-        const response = await axios.delete(
-          `http://localhost:5000/api/employee/delete/${id}`,
-        );
-
-        alert(response.data.message);
-
-        getEmployees(); 
-      } catch (error) {
-        console.log(error);
-      }
-    };
+      getEmployees();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow">
