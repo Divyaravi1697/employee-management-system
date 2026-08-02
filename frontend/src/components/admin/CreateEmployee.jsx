@@ -37,7 +37,7 @@ const CreateEmployee = () => {
       alert("Employee Created Successfully");
       console.log(response.data);
 
-      navigate("/employees");
+      navigate("/admin/employees");
     } catch (error) {
       console.error(error);
       alert(error.response?.data?.message || "Something went wrong");
