@@ -6,6 +6,9 @@ import connectDb from './src/config/dbconfig.js';
 import employeeRouter from './src/router/employee.js';
 import cookieParser from 'cookie-parser';
 import auth from './src/router/login.js';
+import swaggerUi from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerSpec from "./swagger.js";
 
 dotenv.config();
 connectDb();
@@ -35,6 +38,12 @@ app.get("/", (req, res) => {
   res.send("App is running successfully");
 
 });
+
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec)
+);
 
 app.use("/api/employee", employeeRouter);
 app.use("/api/auth", auth);
