@@ -54,6 +54,20 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
   ];
 
   const menuItems = role === "admin" ? adminMenu : employeeMenu;
+  const theme =
+    role === "admin"
+      ? {
+          sidebar: "bg-slate-900",
+          hover: "hover:bg-blue-600",
+          active: "bg-blue-600",
+          border: "border-slate-700",
+        }
+      : {
+          sidebar: "bg-green-900",
+          hover: "hover:bg-green-700",
+          active: "bg-green-700",
+          border: "border-green-800",
+        };
 
   const handleLogout = async () => {
     try {
