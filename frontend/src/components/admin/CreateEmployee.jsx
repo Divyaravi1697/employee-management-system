@@ -55,8 +55,8 @@ const CreateEmployee = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6">
-      <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-xl p-5 sm:p-8">
+    <div className="p-6">
+      <div className=" bg-white shadow-lg rounded-xl p-8">
         <form
           onSubmit={handleSubmit}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -157,18 +157,18 @@ const CreateEmployee = () => {
           </div>
 
           {/* Buttons */}
-          <div className="md:col-span-2 flex flex-col sm:flex-row justify-end gap-4 mt-4">
+          <div className="md:col-span-2 flex justify-end gap-4 mt-4">
             <button
               type="reset"
               onClick={handleReset}
-              className="w-full sm:w-auto px-6 py-3 rounded-lg border hover:bg-gray-100"
+              className="px-6 py-3 rounded-lg border hover:bg-gray-100"
             >
               Reset
             </button>
 
             <button
               type="submit"
-              className="w-full sm:w-auto px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+              className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
             >
               Add Employee
             </button>

@@ -32,10 +32,8 @@ const Login = () => {
       alert(response.data.message);
 
       if (response.data.role === "admin") {
-          document.body.className = "bg-blue-100";
         navigate("/admin");
       } else {
-        document.body.className = "bg-green-100";
         navigate("/employee/dashboard");
       }
     } catch (error) {
