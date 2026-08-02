@@ -15,8 +15,8 @@ console.log(process.env.name);
 const app = express();
 
 const allowedOrigins = [
-  process.env.CLIENT_URL,        // e.g. https://employee-management-system.vercel.app
-  'http://localhost:3000'        // for local dev
+  process.env.CLIENT_URL,
+  "http://localhost:5173",
 ];
 
 app.use(cors({

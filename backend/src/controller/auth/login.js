@@ -44,7 +44,8 @@ const login = async (req, res) => {
         }, process.env.Key, { expiresIn: "1h" });
         res.cookie("auth_token", token, {
             httpOnly: true,
-            secure: false,
+            secure: true,
+            sameSite: "none",
             maxAge: 3600000, // 1 hour
         });
 
