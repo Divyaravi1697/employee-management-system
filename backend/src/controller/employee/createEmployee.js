@@ -8,11 +8,15 @@ const createEmployee = async (req, res) => {
         if (!name  || !department || !salary || !phone || !email || !password) {
             return res.status(400).json({ success: false, message: "All fields are required" });
         }
-        // Check if employee with the same employeeId already exists
-        // const existingEmployee = await employee.findOne({ employeeId });
-        // if (existingEmployee) {
-        //     return res.status(400).json({ success: false, message: "Employee with this ID already exists" });
-        // }
+       // Check if email already exists
+const existingEmployee = await employee.findOne({ email });
+
+if (existingEmployee) {
+    return res.status(400).json({
+        success: false,
+        message: "Email already exists",
+    });
+}
         // Generate Employee ID
         const lastEmployee = await employee.findOne().sort({ createdAt: -1 });
 
@@ -38,21 +42,24 @@ const createEmployee = async (req, res) => {
             password: hashedPassword,
         });
         await newEmployee.save();
-         await sendEmail(
-            email,
-            "Manager Account Created",
-            "Your manager account has been created successfully.",
-            null,
-            name,
-             email,
-            employeeId
+        //  await sendEmail(
+        //     email,
+        //     "Manager Account Created",
+        //     "Your manager account has been created successfully.",
+        //     null,
+        //     name,
+        //      email,
+        //     employeeId
             
          
-        );
+        // );
         res.status(201).json({ message: "Employee created successfully", employee: newEmployee });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ success: false, message: "Server error" });
+        console.error("Create Employee Error:", error);
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        });
     }
 }
 export default createEmployee;
