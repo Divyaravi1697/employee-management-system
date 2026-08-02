@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import auth from './src/router/login.js';
 
 dotenv.config();
+console.log("CLIENT_URL:", process.env.CLIENT_URL);
 connectDb();
 
 console.log(process.env.name);
@@ -15,6 +16,10 @@ console.log(process.env.name);
 const app = express();
 
 // ---------- CORS CONFIG (must come before routes) ----------
+app.use((req, res, next) => {
+  console.log("Origin:", req.headers.origin);
+  next();
+});
 const allowedOrigins = [
   ...(process.env.CLIENT_URL
     ? process.env.CLIENT_URL.split(",").map((s) => s.trim())
@@ -52,7 +57,6 @@ app.use((err, req, res, next) => {
   }
   next(err);
 });
-
 // ---------- SERVER START ----------
 
 const PORT = process.env.PORT || 3000;
