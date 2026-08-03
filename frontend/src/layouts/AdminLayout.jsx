@@ -14,10 +14,10 @@ const AdminLayout = () => {
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="flex-1 lg:ml-64">
+      <div className="flex-1 lg:ml-64 min-w-0">
         <Navbar setIsSidebarOpen={setIsSidebarOpen} />
 
-        <main className="p-6 ">
+        <main className="flex-1 w-full p-4 sm:p-6 overflow-x-auto">
           <Outlet />
         </main>
       </div>

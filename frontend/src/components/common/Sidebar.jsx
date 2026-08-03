@@ -57,9 +57,13 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
 
   const handleLogout = async () => {
     try {
-      await api.post("/auth/logout", {}, {
-        withCredentials: true,
-      });
+      await api.post(
+        "/auth/logout",
+        {},
+        {
+          withCredentials: true,
+        },
+      );
 
       localStorage.removeItem("user");
 
@@ -68,10 +72,19 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
       console.log(error);
     }
   };
+  const sidebarBg =
+    role === "admin"
+      ? "bg-gradient-to-b from-[#0B1120] via-[#172554] to-[#1D4ED8]" // Admin - Blue
+      : "bg-gradient-to-b from-[#4C0519] via-[#9D174D] to-[#DB2777]"; // Employee - pink
+  const activeClass =
+    role === "admin" ? "bg-blue-600 text-white" : "bg-pink-600 text-white";
+
+  const hoverClass =
+    role === "admin" ? "hover:bg-blue-600" : "hover:bg-pink-600";
 
   return (
-    <aside
-      className={`fixed top-0 left-0 h-screen w-64 bg-slate-900 text-white z-50 transform transition-transform duration-300 ${
+    <div
+      className={`fixed top-0 left-0 h-screen w-64 ${sidebarBg} text-white z-50 transform transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } lg:translate-x-0`}
     >
@@ -91,7 +104,7 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
             <button
               key={index}
               onClick={handleLogout}
-              className="w-full flex items-center gap-4 px-6 py-4 hover:bg-blue-600 text-left cursor-pointer"
+              className={`w-full flex items-center gap-4 px-6 py-4 text-left cursor-pointer ${hoverClass}`}
             >
               <span>{item.icon}</span>
               <span>{item.name}</span>
@@ -104,7 +117,7 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
               onClick={() => setIsSidebarOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-4 px-6 py-4 ${
-                  isActive ? "bg-blue-600 text-white" : "hover:bg-blue-600"
+                  isActive ? activeClass : hoverClass
                 }`
               }
             >
@@ -114,7 +127,7 @@ const Sidebar = ({ role, isOpen, setIsSidebarOpen }) => {
           ),
         )}
       </nav>
-    </aside>
+    </div>
   );
 };
 
