@@ -3,6 +3,10 @@
 A full-stack **Employee Management System** built with the **MERN Stack**. This application allows administrators to securely manage employee records with authentication and a responsive dashboard.
 
 ---
+🌐 Live Demo:
+https://employee-management-system-azure-sigma.vercel.app/
+
+---
 
 ## ✨ Features
 
